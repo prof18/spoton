@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_to_write_settings_granted">✅ Permission to write settings granted</string>
+    <string name="after_permission_enabled_message">You can now use the WearOS app to enable/disable the hotspot</string>
+    <string name="hotspot_on_status_message">Hotspot is on</string>
+    <string name="hotspot_off_status_message">Hotspot is off</string>
+    <string name="permissions_needed_message">You need to grant permission to write settings</string>
+    <string name="grant_permission_button">Grant permission</string>
+    <string name="author_label">Developed with ❤️ by</string>
+    <string name="about_app">spoton allows you to enable the hotspot on your device from your Android Wear watch.\n\nThe app on the phone is just a receiver for the watch app. Make sure to have the app installed on your watch too.\n\nMake sure to enable the permission to write system settings to allow the app to enable the hotspot.</string>
+    <string name="about_ok_button">OK</string>
+    <string name="wearos_app_not_installed_title">spoton WearOS app not installed</string>
+    <string name="wearos_app_not_installed_content">Please install spoton on your WearOS device</string>
+</resources>
