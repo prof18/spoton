@@ -19,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
@@ -31,20 +32,32 @@ import com.google.android.gms.wearable.Wearable
 import com.prof18.spotonwear.HOTSPOT_TO_WATCH_MESSAGE_PATH
 import com.prof18.spotonwear.Messenger
 import com.prof18.spotonwear.R
+import com.prof18.spotonwear.complication.MainComplicationService
+import com.prof18.spotonwear.isHotspotEnabledFlow
 import com.prof18.spotonwear.presentation.icon.Wifi_tethering
 import com.prof18.spotonwear.presentation.icon.Wifi_tethering_off
 import com.prof18.spotonwear.presentation.theme.SpotonTheme
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.prof18.spotonwear.tile.MainTileService
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import java.nio.charset.Charset
 
 class MainActivity : ComponentActivity(), MessageClient.OnMessageReceivedListener {
     private val messenger by lazy { Messenger() }
-    private var isHotspotEnabledFlow = MutableStateFlow(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+
+        when (intent.extras?.getString(HOTSPOT_ACTION)) {
+            TOGGLE_HOTSPOT -> {
+                lifecycleScope.launch {
+                    delay(500)
+                    messenger.toggleHotspot(this@MainActivity)
+                }
+            }
+        }
 
         setTheme(android.R.style.Theme_DeviceDefault)
 
@@ -76,13 +89,22 @@ class MainActivity : ComponentActivity(), MessageClient.OnMessageReceivedListene
             when (message) {
                 "true" -> {
                     isHotspotEnabledFlow.update { true }
+                    MainTileService.forceTileUpdate(applicationContext)
+                    MainComplicationService.forceComplicationUpdate(applicationContext)
                 }
 
                 "false" -> {
                     isHotspotEnabledFlow.update { false }
+                    MainTileService.forceTileUpdate(applicationContext)
+                    MainComplicationService.forceComplicationUpdate(applicationContext)
                 }
             }
         }
+    }
+
+    internal companion object {
+        const val HOTSPOT_ACTION = "hotspot_action"
+        const val TOGGLE_HOTSPOT = "toggle_hotspot"
     }
 }
 
@@ -102,7 +124,8 @@ fun WearApp(isHotspotEnabled: Boolean, onToggleHotspotClick: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .padding(bottom = 16.dp),
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colors.primary,

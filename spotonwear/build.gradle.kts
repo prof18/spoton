@@ -12,8 +12,8 @@ android {
         applicationId = "com.prof18.spoton"
         minSdk = 30
         targetSdk = 34
-        versionCode = 4
-        versionName = "1.0"
+        versionCode = 8
+        versionName = "1.0.1"
     }
 
     buildTypes {
@@ -53,4 +53,13 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.kotlinx.coroutines.play.services)
+    implementation(libs.androidx.tiles)
+    implementation(libs.androidx.tiles.material)
+    implementation(libs.androidx.tiles.tooling.preview)
+    implementation(libs.horologist.compose.tools)
+    implementation(libs.horologist.tiles)
+    implementation(libs.androidx.watchface.complications.data.source.ktx)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    debugImplementation(libs.androidx.tiles.tooling)
 }

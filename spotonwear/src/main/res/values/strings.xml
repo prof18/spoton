@@ -2,4 +2,8 @@
 <resources>
     <string name="hotspot_on_status_message">Hotspot is on</string>
     <string name="hotspot_off_status_message">Hotspot is off</string>
+    <string name="tile_btn_turn_on">Turn on</string>
+    <string name="tile_btn_turn_off">Turn off</string>
+    <string name="tile_label">Hotspot toggle</string>
+    <string name="complication_label">Hotspot status</string>
 </resources>
