@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.prof18.spoton"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.prof18.spoton"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 7
         versionName = "1.0"
 
@@ -56,6 +56,7 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.dexmaker)
+    implementation(libs.hidden.api.bypass)
     implementation(libs.play.services.wearable)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
