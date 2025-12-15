@@ -44,4 +44,4 @@ Despite these efforts, the new permission enforcement in Android 16 makes it imp
 This tool was originally developed for myself to make my life easier. The code might not be the most polished or follow all best practices, but it did the job!
 
 ## Featured On
-[Android Police](https://www.androidpolice.com/spoton-app-toggle-hotspot-from-wear-os-smartwatch/).
+[Android Police - "This smartwatch app puts a button on your wrist that toggles your phone's hotspot"](https://www.androidpolice.com/spoton-app-toggle-hotspot-from-wear-os-smartwatch/).
