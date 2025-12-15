@@ -11,4 +11,7 @@
     <string name="about_ok_button">OK</string>
     <string name="wearos_app_not_installed_title">spoton WearOS app not installed</string>
     <string name="wearos_app_not_installed_content">Please install spoton on your WearOS device</string>
+    <string name="android_not_supported_title">Android 16 not supported</string>
+    <string name="android_not_supported_message">From Android 16 onwards, this app will no longer be supported due to system limitations.</string>
+    <string name="android_not_supported_top_bar_label"> (Not Supported)</string>
 </resources>

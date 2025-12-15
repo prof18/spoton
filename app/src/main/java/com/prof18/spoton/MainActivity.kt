@@ -2,6 +2,7 @@ package com.prof18.spoton
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import androidx.activity.ComponentActivity
@@ -67,6 +68,8 @@ class MainActivity : ComponentActivity() {
             val isHotspotEnabled by isHotspotEnabledFlow.collectAsState()
 
             val openAlertDialog = remember { mutableStateOf(false) }
+            val notSupported = Build.VERSION.SDK_INT > 35
+            val openNotSupportedDialog = remember { mutableStateOf(notSupported) }
             val context = LocalContext.current
 
             SpotonTheme {
@@ -102,6 +105,22 @@ class MainActivity : ComponentActivity() {
                             },
                         )
                     }
+                    openNotSupportedDialog.value -> {
+                        AlertDialog(
+                            onDismissRequest = { openNotSupportedDialog.value = false },
+                            title = { Text(text = stringResource(R.string.android_not_supported_title)) },
+                            text = { Text(text = stringResource(R.string.android_not_supported_message)) },
+                            confirmButton = {
+                                TextButton(
+                                    onClick = {
+                                        openNotSupportedDialog.value = false
+                                    }
+                                ) {
+                                    Text(stringResource(R.string.about_ok_button))
+                                }
+                            }
+                        )
+                    }
                 }
 
                 Scaffold(
@@ -135,7 +154,21 @@ class MainActivity : ComponentActivity() {
                             .padding(top = 36.dp)
                             .padding(horizontal = 16.dp)
                     ) {
-                        if (isSystemWritePermissionGranted) {
+                        if (notSupported) {
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.android_not_supported_message),
+                                    color = MaterialTheme.colorScheme.error,
+                                    modifier = Modifier.padding(bottom = 16.dp),
+                                    textAlign = TextAlign.Center,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                        } else {
+                            if (isSystemWritePermissionGranted) {
                             Text(stringResource(R.string.permission_to_write_settings_granted))
 
                             Text(
@@ -199,6 +232,7 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
+                }
                 }
             }
         }

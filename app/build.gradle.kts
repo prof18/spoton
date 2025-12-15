@@ -6,32 +6,22 @@ plugins {
 
 android {
     namespace = "com.prof18.spoton"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.prof18.spoton"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 7
-        versionName = "1.0"
+        targetSdk = 36
+        versionCode = 9
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
-//    signingConfigs {
-//        create("release") {
-//            keyAlias = local.getProperty("keyAlias")
-//            keyPassword = local.getProperty("keyPassword")
-//            storeFile = file(local.getProperty("storeFile") ?: "NOT_FOUND")
-//            storePassword = local.getProperty("storePassword")
-//        }
-//    }
 
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-//            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
