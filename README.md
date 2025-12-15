@@ -4,14 +4,6 @@ Spoton allows you to enable the hotspot on your phone directly from your Android
 
 [<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=com.prof18.spoton)
 
-## Featured On
-
-<a href="https://www.androidpolice.com/spoton-app-toggle-hotspot-from-wear-os-smartwatch/">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Android_Police_Logo_2024.svg/2560px-Android_Police_Logo_2024.svg.png" width="200" alt="Android Police" />
-</a>
-
-Read the article on [Android Police](https://www.androidpolice.com/spoton-app-toggle-hotspot-from-wear-os-smartwatch/).
-
 ## ⚠️ End of Support on Android 16+
 
 **Spoton continues to work on Android 15 and below.**
@@ -50,3 +42,6 @@ Despite these efforts, the new permission enforcement in Android 16 makes it imp
 ## Disclaimer
 
 This tool was originally developed for myself to make my life easier. The code might not be the most polished or follow all best practices, but it did the job!
+
+## Featured On
+[Android Police](https://www.androidpolice.com/spoton-app-toggle-hotspot-from-wear-os-smartwatch/).
