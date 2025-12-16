@@ -18,6 +18,8 @@ With Android 16, Google has significantly tightened security restrictions around
 
 I spent time investigating solutions including `TetheringManager` and various reflection techniques, but all paths lead to `TETHER_ERROR_NO_CHANGE_TETHERING_PERMISSION` (Error 14). Unless you have a rooted device, programmatic hotspot control is effectively gone for third-party apps on Android 16+.
 
+Read more about the announcement here: https://www.marcogomiero.com/posts/2025/spoton-sunset/
+
 ## How it works
 
 Spoton consists of two components:
