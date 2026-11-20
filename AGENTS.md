@@ -10,8 +10,8 @@ devices: make only the changes Play requires, and add no new features.
 ## Release
 
 Bump `versionCode` and `versionName` in `app/build.gradle.kts` and
-`spotonwear/build.gradle.kts`. Each version code must be higher than any code already on
-Play for that form factor.
+`spotonwear/build.gradle.kts`. Phone and Wear OS share the package, so each version code
+must be unique across both and higher than any code already on Play.
 
 Build and sign both bundles with `tools/signing/build-release.sh`. To upload them too, add
 `--upload`: the phone bundle goes to the `internal` track and the Wear OS bundle to

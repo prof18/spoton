@@ -20,7 +20,7 @@ android {
         applicationId = "com.prof18.spoton"
         minSdk = 30
         targetSdk = 35
-        versionCode = 12
+        versionCode = 14
         versionName = "1.0.4-wear"
     }
 
