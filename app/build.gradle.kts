@@ -1,3 +1,11 @@
+import java.util.Properties
+
+// Release signing values come from local.properties (see tools/signing/build-release.sh).
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) file.inputStream().use(::load)
+}
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -12,14 +20,24 @@ android {
         applicationId = "com.prof18.spoton"
         minSdk = 24
         targetSdk = 36
-        versionCode = 9
-        versionName = "1.0.1"
+        versionCode = 13
+        versionName = "1.0.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            localProperties.getProperty("storeFile")?.let { storeFile = rootProject.file(it) }
+            keyAlias = localProperties.getProperty("keyAlias")
+            storePassword = localProperties.getProperty("storePassword")
+            keyPassword = localProperties.getProperty("keyPassword")
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
